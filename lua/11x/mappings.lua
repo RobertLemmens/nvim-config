@@ -1,5 +1,6 @@
 vim.g.mapleader = " "
 vim.keymap.set("n", "<C-n>", vim.cmd.NvimTreeToggle)
+vim.keymap.set("n", "<C-m>", vim.cmd.SymbolsOutline)
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
