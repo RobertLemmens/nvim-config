@@ -8,6 +8,7 @@ return require('packer').startup(function(use)
 	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
+  -- themes
   use { "ellisonleao/gruvbox.nvim",
          as = 'gruvbox',
          config = function() 
@@ -15,6 +16,9 @@ return require('packer').startup(function(use)
             vim.o.background = "dark"
          end
   }
+  use { "catppuccin/nvim", as = "catppuccin" }
+  use({ 'rose-pine/neovim', as = 'rose-pine' })
+  -- themes end
   use {
 	  'nvim-tree/nvim-tree.lua',
 	  requires = {
@@ -23,6 +27,7 @@ return require('packer').startup(function(use)
 	  tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
 
+  use 'simrat39/symbols-outline.nvim'
   use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
   use("mbbill/undotree")
   use("nvim-treesitter/nvim-treesitter-context");
@@ -69,5 +74,6 @@ return require('packer').startup(function(use)
       require('Comment').setup()
     end
   }
+  use { 'mhartington/formatter.nvim' }
 
 end)
