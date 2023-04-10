@@ -7,6 +7,7 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.bo.softtabstop = 2
+vim.opt.guifont = { "FiraCode NF", ":h12" }
 
 vim.opt.termguicolors = true
 vim.opt.nu = true
