@@ -76,4 +76,26 @@ return require('packer').startup(function(use)
   }
   use { 'mhartington/formatter.nvim' }
 
+  use {
+    "nvim-neorg/neorg",
+    config = function()
+      require('neorg').setup {
+        load = {
+          ["core.defaults"] = {}, -- Loads default behaviour
+          ["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
+          ["core.norg.dirman"] = { -- Manages Neorg workspaces
+          config = {
+            workspaces = {
+              notes = "~/notes",
+              yamato = "F:/Workspace/Personal/yamato-island/notes",
+            },
+          },
+        },
+      },
+    }
+    end,
+    run = ":Neorg sync-parsers",
+    requires = "nvim-lua/plenary.nvim",
+  }
+
 end)
