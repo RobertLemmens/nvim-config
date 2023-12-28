@@ -27,6 +27,7 @@ return require('packer').startup(function(use)
   }
   use { "catppuccin/nvim", as = "catppuccin" }
   use({ 'rose-pine/neovim', as = 'rose-pine' })
+  use {'NLKNguyen/papercolor-theme'}
   -- themes end
   use {
 	  'nvim-tree/nvim-tree.lua',
@@ -84,5 +85,18 @@ return require('packer').startup(function(use)
     end
   }
   use { 'mhartington/formatter.nvim' }
+
+  use {
+    "folke/todo-comments.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("todo-comments").setup {}
+    end
+  }
+
+  use {
+    "windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  }
 
 end)
