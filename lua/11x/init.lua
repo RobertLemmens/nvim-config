@@ -2,6 +2,7 @@ require("11x.mappings")
 require("11x.packer")
 
 require("nvim-tree").setup()
+require("nvim-dap-projects").search_project_config()
 
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2

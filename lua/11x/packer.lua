@@ -4,7 +4,7 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.1',
+	  'nvim-telescope/telescope.nvim', tag = '0.1.5',
 	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} },
     config = function()
@@ -17,6 +17,13 @@ return require('packer').startup(function(use)
       }
     end
   }
+
+  -- select boxes open in telescope - meh
+  use { 
+    'nvim-telescope/telescope-ui-select.nvim',
+    config = function() require("telescope").load_extension('ui-select') end
+  }
+
   -- themes
   use { "ellisonleao/gruvbox.nvim",
          as = 'gruvbox',
@@ -97,6 +104,19 @@ return require('packer').startup(function(use)
   use {
     "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
+  }
+
+  -- Debugging
+  use 'mfussenegger/nvim-dap'
+  use { 
+    "rcarriga/nvim-dap-ui", 
+    requires = {"mfussenegger/nvim-dap"},
+    config = function() require("dapui").setup {} end
+  }
+  use 'ldelossa/nvim-dap-projects'
+  use {
+    'theHamsta/nvim-dap-virtual-text',
+    config = function() require("nvim-dap-virtual-text").setup {} end
   }
 
 end)

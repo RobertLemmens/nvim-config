@@ -31,3 +31,11 @@ end)
 lsp.nvim_workspace()
 
 lsp.setup()
+
+-- require("lspconfig").clangd.setup {
+--   on_attach = on_attach,
+--   cmd = {
+--     "clangd",
+--     "--offset-encoding=utf-16",
+--   },
+-- }
