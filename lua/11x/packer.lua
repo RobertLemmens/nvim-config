@@ -118,5 +118,9 @@ return require('packer').startup(function(use)
     'theHamsta/nvim-dap-virtual-text',
     config = function() require("nvim-dap-virtual-text").setup {} end
   }
+  use {
+    'nvim-telescope/telescope-dap.nvim',
+    config = function() require("telescope").load_extension('dap') end
+  }
 
 end)
