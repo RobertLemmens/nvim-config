@@ -48,7 +48,6 @@ return require('packer').startup(function(use)
   use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
   use("mbbill/undotree")
   use("nvim-treesitter/nvim-treesitter-context");
-  use("github/copilot.vim")
 
   use {
     'VonHeikemen/lsp-zero.nvim',
