@@ -38,6 +38,21 @@ require("formatter").setup {
         }
       end
     },
+    typescript = {
+      function()
+        return {
+          exe = "prettier",
+          args = {
+            "--config-precedence",
+            "prefer-file",
+            "--stdin-filepath",
+            util.escape_path(util.get_current_buffer_file_path()),
+          },
+          stdin = true,
+          try_node_modules = true,
+        }
+      end
+    },
 
     cpp = {
       function()

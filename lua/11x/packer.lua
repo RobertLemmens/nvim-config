@@ -2,6 +2,7 @@ vim.cmd.packadd('packer.nvim')
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
+  use { "nvim-neotest/nvim-nio" } -- needed as dependency (async io in lua or something)
 
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.5',
@@ -15,6 +16,18 @@ return require('packer').startup(function(use)
           }
         }
       }
+    end
+  }
+
+  use {"folke/trouble.nvim",
+    config = function()
+      require('trouble').setup()
+    end
+  }
+
+  use {'NvChad/nvim-colorizer.lua',
+    config = function()
+      require "colorizer".setup()
     end
   }
 
@@ -35,6 +48,19 @@ return require('packer').startup(function(use)
   use { "catppuccin/nvim", as = "catppuccin" }
   use({ 'rose-pine/neovim', as = 'rose-pine' })
   use {'NLKNguyen/papercolor-theme'}
+  use {"rafamadriz/neon"}
+  use {'folke/tokyonight.nvim'}
+  use {'sainnhe/everforest'}
+  use {'rebelot/kanagawa.nvim'}
+  use {'shaunsingh/nord.nvim'}
+  use {'p00f/alabaster.nvim'}
+  use {
+    "zenbones-theme/zenbones.nvim",
+    -- Optionally install Lush. Allows for more configuration or extending the colorscheme
+    -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
+    -- In Vim, compat mode is turned on as Lush only works in Neovim.
+    requires = "rktjmp/lush.nvim"
+  }
   -- themes end
   use {
 	  'nvim-tree/nvim-tree.lua',
@@ -48,6 +74,7 @@ return require('packer').startup(function(use)
   use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
   use("mbbill/undotree")
   use("nvim-treesitter/nvim-treesitter-context");
+  use("echasnovski/mini.align")
 
   use {
     'VonHeikemen/lsp-zero.nvim',
@@ -85,6 +112,14 @@ return require('packer').startup(function(use)
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
   use {
+    'nanozuki/tabby.nvim',
+    requires = {'nvim-tree/nvim-web-devicons'},
+    config = function()
+      require('tabby').setup()
+    end
+  }
+
+  use {
     'numToStr/Comment.nvim',
     config = function()
       require('Comment').setup()
@@ -106,6 +141,10 @@ return require('packer').startup(function(use)
   }
 
   -- Debugging
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function() require("gitsigns").setup {} end
+  }
   use 'mfussenegger/nvim-dap'
   use { 
     "rcarriga/nvim-dap-ui", 
@@ -120,6 +159,30 @@ return require('packer').startup(function(use)
   use {
     'nvim-telescope/telescope-dap.nvim',
     config = function() require("telescope").load_extension('dap') end
+  }
+  use {
+    "nvim-neotest/neotest",
+    requires = {
+      "nvim-neotest/nvim-nio",
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      'nvim-neotest/neotest-jest'
+    },
+    config = function()
+      require('neotest').setup({
+        adapters = {
+          require('neotest-jest')({
+            jestCommand = "npm test --",
+            jestConfigFile = "jest.config.js",
+            env = { CI = true },
+            cwd = function(path)
+              return vim.fn.getcwd()
+            end,
+          }),
+        }
+      })
+    end
   }
 
 end)

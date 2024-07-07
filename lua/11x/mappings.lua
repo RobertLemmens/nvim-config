@@ -23,3 +23,10 @@ vim.keymap.set("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>")
 vim.keymap.set("n", "<leader>de", ":lua require'dapui'.eval()<CR>")
 vim.keymap.set("n", "<leader>dv", ":lua require'dapui'.eval(vim.fn.input('Evaluate: '))<CR>")
 vim.keymap.set("n", "<leader>dw", ":lua require'dapui'.elements.watches.add(vim.fn.expand('<cword>'))<CR>")
+
+-- neotest
+vim.keymap.set("n", "<F1>", ":lua require'neotest'.run.run(vim.fn.expand('%'))<CR>")
+vim.keymap.set("n", "<C-h>", ":lua require'neotest'.output()<CR>")
+
+-- trouble
+vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<CR>")
