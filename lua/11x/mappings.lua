@@ -30,3 +30,5 @@ vim.keymap.set("n", "<C-h>", ":lua require'neotest'.output()<CR>")
 
 -- trouble
 vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<CR>")
+vim.keymap.set("n", "<leader>td", "<cmd>Trouble diagnostics toggle<CR>")
+vim.keymap.set("n", "<leader>ts", "<cmd>Trouble symbols toggle<CR>")

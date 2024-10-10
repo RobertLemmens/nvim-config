@@ -17,3 +17,5 @@ vim.opt.wrap = false
 vim.opt.undofile = true
 vim.opt.incsearch = true
 vim.opt.signcolumn = "yes"
+vim.opt.laststatus = 3
+vim.opt.splitkeep = "screen"

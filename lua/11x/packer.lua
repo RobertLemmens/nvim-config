@@ -21,7 +21,15 @@ return require('packer').startup(function(use)
 
   use {"folke/trouble.nvim",
     config = function()
-      require('trouble').setup()
+      require('trouble').setup {
+        restore = true
+      }
+    end
+  }
+
+  use { "folke/edgy.nvim",
+    config = function()
+      require('edgy').setup()
     end
   }
 
@@ -32,7 +40,7 @@ return require('packer').startup(function(use)
   }
 
   -- select boxes open in telescope - meh
-  use { 
+  use {
     'nvim-telescope/telescope-ui-select.nvim',
     config = function() require("telescope").load_extension('ui-select') end
   }
@@ -40,7 +48,7 @@ return require('packer').startup(function(use)
   -- themes
   use { "ellisonleao/gruvbox.nvim",
          as = 'gruvbox',
-         config = function() 
+         config = function()
             vim.cmd('colorscheme gruvbox')
             vim.o.background = "dark"
          end
@@ -50,6 +58,18 @@ return require('packer').startup(function(use)
   use {'NLKNguyen/papercolor-theme'}
   use {"rafamadriz/neon"}
   use {'folke/tokyonight.nvim'}
+  use {
+    '0xstepit/flow.nvim',
+    config = function()
+      -- require("flow").setup{
+      --   transparent = true,
+      --   fluo_color = "pink",
+      --   mode = "normal",
+      --   aggressive_spell = false,
+      -- }
+      -- vim.cmd "colorscheme flow"
+    end
+  }
   use {'sainnhe/everforest'}
   use {'rebelot/kanagawa.nvim'}
   use {'shaunsingh/nord.nvim'}
@@ -58,7 +78,7 @@ return require('packer').startup(function(use)
     "zenbones-theme/zenbones.nvim",
     -- Optionally install Lush. Allows for more configuration or extending the colorscheme
     -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
-    -- In Vim, compat mode is turned on as Lush only works in Neovim.
+    -- In Vim, cpat mode is turned on as Lush only works in Neovim.
     requires = "rktjmp/lush.nvim"
   }
   -- themes end
@@ -146,8 +166,8 @@ return require('packer').startup(function(use)
     config = function() require("gitsigns").setup {} end
   }
   use 'mfussenegger/nvim-dap'
-  use { 
-    "rcarriga/nvim-dap-ui", 
+  use {
+    "rcarriga/nvim-dap-ui",
     requires = {"mfussenegger/nvim-dap"},
     config = function() require("dapui").setup {} end
   }
