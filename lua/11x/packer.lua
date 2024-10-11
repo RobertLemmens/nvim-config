@@ -90,7 +90,6 @@ return require('packer').startup(function(use)
 	  tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
 
-  use 'simrat39/symbols-outline.nvim'
   use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
   use("mbbill/undotree")
   use("nvim-treesitter/nvim-treesitter-context");
